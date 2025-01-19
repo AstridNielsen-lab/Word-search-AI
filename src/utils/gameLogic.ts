@@ -144,8 +144,8 @@ export const generateBoard = async (difficulty: Difficulty): Promise<GameState> 
           found: false,
           startPos: [placement.row, placement.col],
           endPos: [
-            placement.direction === 'vertical' ? placement.row + word.length - 1 : placement.row,
-            placement.direction === 'horizontal' ? placement.col + word.length - 1 : placement.col
+            placement.direction === 'horizontal' ? placement.row : placement.row + word.length - 1,
+            placement.direction === 'vertical' ? placement.col : placement.col + word.length - 1
           ]
         });
       }
@@ -181,20 +181,29 @@ export const checkWordSelection = (
   endCell: [number, number],
   words: Word[]
 ): Word | null => {
-  // Check if the selection matches any word's position
   return words.find(word => {
     if (word.found || !word.startPos || !word.endPos) return false;
 
-    const matchesStart = (
-      (startCell[0] === word.startPos[0] && startCell[1] === word.startPos[1]) ||
-      (startCell[0] === word.endPos[0] && startCell[1] === word.endPos[1])
+    // Check both forward and reverse directions
+    const forwardMatch = (
+      (startCell[0] === word.startPos[0] && startCell[1] === word.startPos[1] &&
+       endCell[0] === word.endPos[0] && endCell[1] === word.endPos[1]) ||
+      (startCell[0] === word.endPos[0] && startCell[1] === word.endPos[1] &&
+       endCell[0] === word.startPos[0] && endCell[1] === word.startPos[1])
     );
 
-    const matchesEnd = (
-      (endCell[0] === word.startPos[0] && endCell[1] === word.startPos[1]) ||
-      (endCell[0] === word.endPos[0] && endCell[1] === word.endPos[1])
-    );
+    // Check if it's a diagonal word
+    const isDiagonal = Math.abs(word.endPos[0] - word.startPos[0]) === Math.abs(word.endPos[1] - word.startPos[1]);
+    
+    if (isDiagonal) {
+      // For diagonal words, check if the selection follows the diagonal path
+      const rowDiff = Math.abs(endCell[0] - startCell[0]);
+      const colDiff = Math.abs(endCell[1] - startCell[1]);
+      const isValidDiagonal = rowDiff === colDiff;
 
-    return matchesStart && matchesEnd;
+      if (!isValidDiagonal) return false;
+    }
+
+    return forwardMatch;
   }) || null;
 };

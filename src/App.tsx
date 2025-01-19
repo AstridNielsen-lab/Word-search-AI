@@ -99,68 +99,87 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <header className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-            Desafio de Caça-Palavras
-          </h1>
-          <p className="text-gray-600">
-            Desenvolvido por Julio Campos Machado - Like Look Solutions
-          </p>
-          <p className="text-sm text-gray-500 mt-1">
-            <a href="https://likelook.wixsite.com/solutions" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-              Visite nosso site
-            </a>
-            {' • '}
-            <a href="https://wa.me/5511970603441" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">
-              WhatsApp: (11) 97060-3441
-            </a>
-          </p>
-        </header>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <div className="flex-grow p-4 sm:p-8">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <header className="text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+              Desafio de Caça-Palavras
+            </h1>
+          </header>
 
-        {gameState.isGameOver && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-            <h2 className="text-2xl font-bold text-blue-800 mb-2">
-              {allWordsFound ? 'Parabéns!' : 'Tempo Esgotado!'}
-            </h2>
-            <p className="text-blue-600 mb-4">
-              {allWordsFound 
-                ? `Você encontrou todas as palavras! Pontuação final: ${gameState.score}`
-                : `Você encontrou ${gameState.words.filter(w => w.found).length} de ${gameState.words.length} palavras.`
-              }
-            </p>
-            <button
-              onClick={() => startNewGame(gameState.difficulty)}
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Jogar Novamente
-            </button>
-          </div>
-        )}
+          {gameState.isGameOver && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+              <h2 className="text-2xl font-bold text-blue-800 mb-2">
+                {allWordsFound ? 'Parabéns!' : 'Tempo Esgotado!'}
+              </h2>
+              <p className="text-blue-600 mb-4">
+                {allWordsFound 
+                  ? `Você encontrou todas as palavras! Pontuação final: ${gameState.score}`
+                  : `Você encontrou ${gameState.words.filter(w => w.found).length} de ${gameState.words.length} palavras.`
+                }
+              </p>
+              <button
+                onClick={() => startNewGame(gameState.difficulty)}
+                className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Jogar Novamente
+              </button>
+            </div>
+          )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 flex flex-col items-center gap-8">
-            <GameControls
-              difficulty={gameState.difficulty}
-              onDifficultyChange={(d) => startNewGame(d)}
-              onNewGame={() => startNewGame(gameState.difficulty)}
-              timeRemaining={gameState.timeRemaining}
-              score={gameState.score}
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2 flex flex-col items-center gap-8">
+              <GameControls
+                difficulty={gameState.difficulty}
+                onDifficultyChange={(d) => startNewGame(d)}
+                onNewGame={() => startNewGame(gameState.difficulty)}
+                timeRemaining={gameState.timeRemaining}
+                score={gameState.score}
+              />
 
-            <GameBoard
-              gameState={gameState}
-              onCellClick={handleCellClick}
-              selectedCells={selectedCells}
-            />
-          </div>
+              <GameBoard
+                gameState={gameState}
+                onCellClick={handleCellClick}
+                selectedCells={selectedCells}
+              />
+            </div>
 
-          <div className="lg:col-span-1">
-            <WordList words={gameState.words} />
+            <div className="lg:col-span-1">
+              <WordList words={gameState.words} />
+            </div>
           </div>
         </div>
       </div>
+
+      <footer className="bg-white shadow-md mt-8">
+        <div className="max-w-4xl mx-auto py-6 px-4 sm:px-8">
+          <div className="text-center text-gray-600">
+            <p className="font-medium mb-2">
+              Desenvolvido por Julio Campos Machado - Like Look Solutions
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href="https://likelook.wixsite.com/solutions" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                Visite nosso site
+              </a>
+              <span className="hidden sm:inline text-gray-400">•</span>
+              <a 
+                href="https://wa.me/5511970603441" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-green-600 hover:text-green-800 transition-colors"
+              >
+                WhatsApp: (11) 97060-3441
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
