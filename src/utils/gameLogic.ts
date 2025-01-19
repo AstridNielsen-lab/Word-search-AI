@@ -15,13 +15,39 @@ const directions: Direction[] = ['horizontal', 'vertical', 'diagonal'];
 // Pool de palavras expandido para cada nível de dificuldade
 const wordPool: Record<Difficulty, string[]> = {
   easy: [
+    // Palavras originais
     'CASA', 'BOLA', 'GATO', 'RATO', 'PATO', 'FADA', 'LOBO', 'SAPO', 'VACA',
     'PEIXE', 'URSO', 'MESA', 'BOLO', 'FOGO', 'LAGO', 'MATO', 'REDE', 'SOPA',
     'DADO', 'FACA', 'MALA', 'PENA', 'RODA', 'SACO', 'TELA', 'VELA', 'ARCO',
     'BECO', 'CAMA', 'DEDO', 'FILA', 'GELO', 'JOGO', 'LAMA', 'MAPA', 'NATA',
     'ONDA', 'PATO', 'RAMO', 'SINO', 'TACO', 'UVAS', 'VASO', 'ZONA', 'ALHO',
     'BALA', 'CAPA', 'DAMA', 'FADA', 'GOTA', 'ILHA', 'JATO', 'LATA', 'MEIA',
-    'NEVE', 'OURO', 'PIPA', 'RISO', 'SOPA', 'TETO', 'VELA', 'ZEBU'
+    'NEVE', 'OURO', 'PIPA', 'RISO', 'SOPA', 'TETO', 'VELA', 'ZEBU',
+    // Novas palavras
+    'ANEL', 'AMOR', 'ATUM', 'AVES', 'AZUL', 'BAIO', 'BALA', 'BEBE', 'BICO',
+    'BIFE', 'BODE', 'BOIA', 'BOLO', 'BOTA', 'BOTO', 'CAFE', 'CAJU', 'CALO',
+    'CANA', 'CANO', 'CAOS', 'CAPA', 'CARA', 'CASA', 'CEDO', 'CELA', 'CERA',
+    'CESTA', 'CHAO', 'CHEF', 'CIMA', 'CINE', 'CIPO', 'COCO', 'COLA', 'CONE',
+    'COPO', 'CORA', 'CORO', 'COVA', 'COXA', 'CUBO', 'DADO', 'DAMA', 'DEDO',
+    'DICA', 'DIVA', 'DOCE', 'DONO', 'DOTE', 'DUNA', 'DUQUE', 'EIXO', 'ERVA',
+    'FACA', 'FADA', 'FALA', 'FAMA', 'FARO', 'FASE', 'FATO', 'FAVA', 'FEIRA',
+    'FENO', 'FERA', 'FIGO', 'FILA', 'FITA', 'FOCA', 'FOGO', 'FOLE', 'FOME',
+    'FONTE', 'FORA', 'FOTO', 'GADO', 'GALO', 'GATO', 'GELO', 'GEMA', 'GELO',
+    'GIRO', 'GOTA', 'GRAO', 'GRUA', 'GUIA', 'HALO', 'HARPA', 'HERA', 'HEROI',
+    'HORA', 'HOTEL', 'ILHA', 'JADE', 'JATO', 'JAZZ', 'JIPE', 'JOIA', 'JOGO',
+    'JUBA', 'JUIZ', 'JUTA', 'LACO', 'LADO', 'LAGO', 'LAMA', 'LAPIS', 'LATA',
+    'LAVA', 'LEAO', 'LEME', 'LENTE', 'LEVE', 'LEXA', 'LIDO', 'LIMA', 'LIMO',
+    'LIRA', 'LISA', 'LISO', 'LISTA', 'LOBA', 'LOBO', 'LOJA', 'LONA', 'LOTE',
+    'LOUCA', 'LOUSA', 'LUVA', 'LUXO', 'MACA', 'MACO', 'MALA', 'MAMA', 'MANA',
+    'MAPA', 'MARE', 'MATA', 'MATO', 'MEAO', 'MEIA', 'MEIO', 'MESA', 'META',
+    'MICO', 'MINA', 'MITO', 'MOCA', 'MODA', 'MODO', 'MOLA', 'MOLE', 'MOMO',
+    'MORO', 'MOTO', 'MUDA', 'MUDO', 'MULA', 'MURO', 'NABO', 'NADO', 'NATA',
+    'NAVE', 'NETO', 'NEVE', 'NINHO', 'NIVE', 'NODO', 'NOME', 'NOTA', 'NOVO',
+    'NUCA', 'NULO', 'OBRA', 'OCRE', 'OGRO', 'OLEO', 'OLHO', 'ONCA', 'ONDA',
+    'OURO', 'OVAL', 'OVNI', 'PACA', 'PACO', 'PAIS', 'PALA', 'PANO', 'PAPA',
+    'PARA', 'PATO', 'PAUS', 'PELE', 'PENA', 'PERA', 'PESO', 'PIAO', 'PINO',
+    'PIPA', 'PISO', 'PITA', 'PIVO', 'POEMA', 'POETA', 'POLO', 'POMO', 'PORO',
+    'POTE', 'POUSO', 'POVO', 'PRADO', 'PRATA', 'PROA', 'PROVA', 'PUFE'
   ],
   medium: [
     'ESCOLA', 'JARDIM', 'BANANA', 'CAVALO', 'GIRAFA', 'MACACO', 'SAPATO',
