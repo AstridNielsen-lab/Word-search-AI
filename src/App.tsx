@@ -161,6 +161,34 @@ function App() {
           </div>
         </div>
       </div>
+      <footer className="bg-white shadow-md mt-8">
+        <div className="max-w-4xl mx-auto py-6 px-4 sm:px-8">
+          <div className="text-center text-gray-600">
+            <p className="font-medium mb-2">
+              Desenvolvido por Julio Campos Machado - Like Look Solutions
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href="https://likelook.wixsite.com/solutions" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                Visite nosso site
+              </a>
+              <span className="hidden sm:inline text-gray-400">•</span>
+              <a 
+                href="https://wa.me/5511970603441" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-green-600 hover:text-green-800 transition-colors"
+              >
+                WhatsApp: (11) 97060-3441
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
