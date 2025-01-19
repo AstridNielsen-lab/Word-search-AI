@@ -105,18 +105,7 @@ function App() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
             Desafio de Caça-Palavras
           </h1>
-          <p className="text-gray-600">
-            Desenvolvido por Julio Campos Machado - Like Look Solutions
-          </p>
-          <p className="text-sm text-gray-500 mt-1">
-            <a href="https://likelook.wixsite.com/solutions" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-              Visite nosso site
-            </a>
-            {' • '}
-            <a href="https://wa.me/5511970603441" target="_blank" rel="noopener noreferrer" className="hover:text-green-600">
-              WhatsApp: (11) 97060-3441
-            </a>
-          </p>
+        
         </header>
 
         {gameState.isGameOver && (
